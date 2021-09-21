@@ -1,0 +1,86 @@
+/* RIGHT SIDEBAR */
+.right-sidebar {
+    margin-top: 3rem;
+}
+
+.abroad-programs h5,
+.test-preparation h5,
+.follow-us h6 {
+    color: var(--primary-color);
+    position: relative;
+}
+
+.abroad-programs h5:before,
+.test-preparation h5:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 30px;
+    transform: translateY(-50%);
+    background: var(--primary-color);
+    height: 2px;
+    width: 40px;
+}
+
+.abroad-programs ul,
+.test-preparation ul,
+.follow-us {
+    border: 1px solid #ccc;
+    box-shadow: 0px 2px 7px rgb(22 30 106 / 20%);
+
+}
+
+.abroad-programs ul,
+.test-preparation ul {
+    line-height: 3rem;
+}
+
+.abroad-programs ul a,
+.test-preparation ul a {
+    display: block;
+    color: #000;
+    border-bottom: 1px solid #087b6042;
+}
+
+.abroad-programs ul a:nth-child(4) {
+    border-bottom: none;
+}
+
+.abroad-programs ul li a,
+.test-preparation ul li a {
+    padding-left: 1rem;
+    position: relative;
+}
+
+.abroad-programs ul li a:hover,
+.test-preparation ul li a:hover {
+    text-decoration: none;
+    background: red;
+    color: white;
+}
+
+.abroad-programs ul li a:before,
+.test-preparation ul li a:before {
+    position: absolute;
+    content: '';
+    transition: all 500ms ease;
+    opacity: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-left: 4px solid rgb(15, 33, 114);
+  }
+
+  
+  .abroad-programs ul li  a:hover:before,
+  .test-preparation ul li a:hover:before {
+    opacity: 1;
+    left: 0;
+    right: 0;
+  }
+  @media(max-width: 769px) {
+    .follow-us{
+        display: none;
+    }
+}

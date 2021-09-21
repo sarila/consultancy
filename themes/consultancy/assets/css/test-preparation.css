@@ -1,0 +1,74 @@
+.preparation-detail {
+    margin-top: 3rem;
+}
+
+.preparation-detail h5 {
+    position: relative;
+    color: var(--primary-color);
+
+}
+
+.preparation-detail h5:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 30px;
+    transform: translateY(-50%);
+    background: var(--primary-color);
+    height: 2px;
+    width: 40px;
+}
+
+
+/* IELTS TEST QUESTIONS */
+.ielts-test .accordion {
+    width: 100%;
+}
+
+.ielts-test .accordion {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    box-shadow: 0px 2px 7px rgb(22 30 106 / 30%);
+}
+
+.ielts-test .accordion textarea,
+.ielts-test .accordion .option {
+    margin-top: .5rem;
+}
+
+.ielts-test .accordion .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: var(--primary-color);
+    outline: 0;
+    box-shadow: none;
+}
+
+.ielts-test .accordion-content input[type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+    margin-top: 7px;
+}
+
+.ielts-test .option {
+    display: flex;
+}
+
+.submit-button a {
+    border: 1px solid var(--primary-color);
+    padding: 3px 15px;
+    color: var(--primary-color);
+}
+
+.submit-button a:hover {
+    text-decoration: none;
+    background: var(--primary-color);
+    color: var(--white-color);
+}
+
+
+@media(max-width: 1025px) {
+    .inner-detail {
+        margin-bottom: 2rem;
+    }
+}
