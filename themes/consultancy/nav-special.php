@@ -8,16 +8,31 @@
             <div class="inner-content">
                 <div class="top-left">
                     <ul>
-                        <li><i class="fas fa-map-marker-alt"></i>Shantinagar, kathmandu</li>
-                        <li><i class="fas fa-phone-volume"></i>9835612047</li>
-                        <li><i class="far fa-envelope"></i>techcoderznepal@gmail.com</li>
+                        <?php if(get_theme_mod('consultancy_address_handle')){?>
+
+                            <li><i class="fas fa-map-marker-alt"></i><?php echo get_theme_mod('consultancy_address_handle'); ?></li>
+                        <?php } ?>
+                        <?php if(get_theme_mod('consultancy_phone_handle')){?>
+
+                            <li><i class="fas fa-phone-volume"></i><?php echo get_theme_mod('consultancy_phone_handle'); ?></li>
+                        <?php } ?>
+                        <?php if(get_theme_mod('consultancy_email_handle')){?>
+
+                            <li><i class="fas fa-envelope"></i><?php echo get_theme_mod('consultancy_email_handle'); ?></li>
+                        <?php } ?>
                     </ul>
                 </div>
                 <div class="top-right">
                     <ul>
-                        <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                        <?php if(get_theme_mod('consultancy_facebook_handle')){?>
+                            <li><a href="<?php echo get_theme_mod('consultancy_facebook_handle'); ?>"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                        <?php } ?>
+                        <?php if(get_theme_mod('consultancy_twitter_handle')){?>
+                            <li><a href="<?php echo get_theme_mod('consultancy_twitter_handle'); ?>"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                        <?php } ?>
+                        <?php if(get_theme_mod('consultancy_instagram_handle')){?>
+                            <li><a href="<?php echo get_theme_mod('consultancy_instagram_handle'); ?>"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
@@ -28,7 +43,16 @@
     <div class="header-wrapper" id="topheader">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <a href="index.php"> <img class="img-fluid" src="assets\images\logo\logo.jpg" alt="Logo"></a>
+
+                <?php
+                    if(has_custom_logo() || is_customize_preview()){
+                        the_custom_logo();
+                    } else { ?>
+                      <a href="<?php echo esc_url(home_url('/')); ?>" >
+                        <img class="img-fluid" src="<?php echo get_template_directory_uri()?>'assets\images\logo\logo.jpg'" alt="Logo">
+                      </a>
+                <?php } ?>
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

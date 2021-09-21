@@ -5,13 +5,13 @@
    // Includes
    include (get_theme_file_path('/includes/front/enqueue.php'));
    include (get_theme_file_path('/includes/front/setup.php'));
-   // include (get_theme_file_path('/includes/customizer/theme-customizer.php'));
-   // include (get_theme_file_path('/includes/customizer/contact.php'));
+   include (get_theme_file_path('/includes/customizer/theme-customizer.php'));
+   include (get_theme_file_path('/includes/customizer/contact.php'));
 
    // Hooks
     add_action('wp_enqueue_scripts', 'consultancy_enqueue');
-    // add_action('after_setup_theme', 'consultancy_setup_theme');
-    // add_action('customize_register', 'consultancy_customize_register');
+    add_action('after_setup_theme', 'consultancy_setup_theme');
+    add_action('customize_register', 'consultancy_customize_register');
      
 
      // Menu Item Alteration

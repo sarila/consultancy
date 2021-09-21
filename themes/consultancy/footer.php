@@ -5,24 +5,38 @@
             <div class="col-lg-4 col-md-4">
                 <div class="first-child">
                     <div class="footer-img">
-                        <img src="assets/images/logo/logo.jpg" alt="">
+                        <?php
+                            if(has_custom_logo() || is_customize_preview()){
+                                the_custom_logo();
+                            } else { ?>
+                              <a href="<?php echo esc_url(home_url('/')); ?>" >
+                                <img src="<?php echo get_template_directory_uri()?>'assets\images\logo\logo.jpg'" alt="Logo">
+                              </a>
+                        <?php } ?>
+                        <!-- <img src="assets/images/logo/logo.jpg" alt=""> -->
                     </div>
                     <div class="social-buttons">
-                        <a href="#" class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
-                            <span class="social-button__inner">
-                                <i class="fab fa-facebook-f"></i>
-                            </span>
-                        </a>
-                        <a href="#" class="social-buttons__button social-button social-button--youtube" aria-label="Youtube">
-                            <span class="social-button__inner">
-                                <i class="fab fa-twitter"></i>
-                            </span>
-                        </a>
-                        <a href="#" class="social-buttons__button social-button social-button--instagram" aria-label="Instagram">
-                            <span class="social-button__inner">
-                                <i class="fab fa-instagram"></i>
-                            </span>
-                        </a>
+                        <?php if(get_theme_mod('consultancy_facebook_handle')){?>
+                            <a href="<?php echo get_theme_mod('consultancy_facebook_handle'); ?>" class="social-buttons__button social-button social-button--facebook" aria-label="Facebook">
+                                <span class="social-button__inner">
+                                    <i class="fab fa-facebook-f"></i>
+                                </span>
+                            </a>
+                        <?php } ?>
+                        <?php if(get_theme_mod('consultancy_twitter_handle')){?>
+                            <a href="<?php echo get_theme_mod('consultancy_twitter_handle'); ?>" class="social-buttons__button social-button social-button--youtube" aria-label="Youtube">
+                                <span class="social-button__inner">
+                                    <i class="fab fa-twitter"></i>
+                                </span>
+                            </a>
+                        <?php } ?>
+                        <?php if(get_theme_mod('consultancy_instagram_handle')){?>
+                            <a href="<?php echo get_theme_mod('consultancy_instagram_handle'); ?>" class="social-buttons__button social-button social-button--instagram" aria-label="Instagram">
+                                <span class="social-button__inner">
+                                    <i class="fab fa-instagram"></i>
+                                </span>
+                            </a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
