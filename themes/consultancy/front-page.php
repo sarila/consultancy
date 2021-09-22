@@ -3,12 +3,22 @@
 
 <section class="carousel">
     <div class="owl-carousel owl-theme">
-        <div class="item">
-            <img src="<?php get_template_directory_uri() ?>'assets/images/banner/consult.jpg'" class="img-fluid" alt="">
-        </div>
-        <div class="item">
-            <img src="assets/images/banner/classes.jpg" class="img-fluid" alt="">
-        </div>
+        <?php
+            $args = array(
+                'post_type' => 'sliderimages',
+                'post_status' => 'publish',
+                'posts_per_page' => -1,
+                'orderby' => 'date',
+                'order' => 'ASC',
+            );
+        $sliderimages = new WP_Query($args);
+        while ($sliderimages->have_posts()) : $sliderimages->the_post(); ?>
+            <div class="item">
+                <img src="<?php the_post_thumbnail_url(); ?>" class="img-fluid" alt="">
+            </div>
+        <?php endwhile;
+         wp_reset_postdata();  ?>
+       
     </div>
 </section>
 <section class="short-intro">
@@ -29,46 +39,25 @@
     <div class="container">
         <h4 class="text-center mb-5">WHAT WE DO</h4>
         <div class="row">
-            <div class="col-md-4">
-                <div class="services-detail">
-                    <img src="assets/images/consultation.png" alt="">
-                    <p><a href="#">VISA COUNSELING</a></p>
-
+            <?php
+            $args = array(
+                'post_type' => 'services',
+                'post_status' => 'publish',
+                'posts_per_page' => -1,
+                'orderby' => 'date',
+                'order' => 'ASC',
+            );
+            $services = new WP_Query($args);
+            while ($services->have_posts()) : $services->the_post(); ?>
+                <div class="col-md-4 mt-4">
+                    <div class="services-detail">
+                        <img src="<?php the_post_thumbnail_url() ?>" alt="">
+                        <p><a href="#"><?php the_title(); ?></a></p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="services-detail">
-                    <img src="assets/images/checklist.png" alt="">
-                    <p><a href="#">Application Processing</a></p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="services-detail">
-                    <img src="assets/images/checklist.png" alt="">
-                    <p><a href="#">Test Preparation </a></p>
-
-                </div>
-            </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col-md-4">
-                <div class="services-detail">
-                    <img src="assets/images/guide.png" alt="">
-                    <p><a href="#">Documentation Guide</a></p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="services-detail">
-                    <img src="assets/images/departures.png" alt="">
-                    <p><a href="#">Pre-departure guidance</a></p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="services-detail">
-                    <img src="assets/images/passport.png" alt="">
-                    <p><a href="#"> Visa Lodgment</a></p>
-                </div>
-            </div>
+            <?php endwhile;
+            wp_reset_postdata();  ?>
+           
         </div>
     </div>
 </section>
@@ -76,38 +65,28 @@
     <div class="container">
         <h3 class="text-center">Explore Your <span>STUDY ABROAD OPTIONS</span></h3>
         <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="destination">
-                    <img src="assets/images/destination/australia.jpg" alt="">
-                    <div class="destination-title"><a href="study-in-australia.php">
-                            AUSTRALIA </a>
+            <?php
+            $args = array(
+                'post_type' => 'countries',
+                'post_status' => 'publish',
+                'posts_per_page' => -1,
+                'orderby' => 'date',
+                'order' => 'ASC',
+            );
+            $countries = new WP_Query($args);
+            while ($countries->have_posts()) : $countries->the_post(); ?>
+                <div class="col-lg-3 col-md-6">
+                    <div class="destination">
+                        <img src="<?php the_post_thumbnail_url() ?>" alt="">
+                        <div class="destination-title"><a href="study-in-australia.php">
+                                <?php the_title(); ?> </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="destination">
-                    <img src="assets/images/destination/america.jpg" alt="">
-                    <div class="destination-title"> <a href="study-in-usa.php">
-                            USA </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="destination">
-                    <img src="assets/images/destination/canada.jpg" alt="">
-                    <div class="destination-title"><a href="study-in-canada.php">
-                            CANADA </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="destination">
-                    <img src="assets/images/destination/uk1.jpg" alt="">
-                    <div class="destination-title"><a href="study-in-uk.php">
-                            UK </a>
-                    </div>
-                </div>
-            </div>
+            <?php endwhile;
+            wp_reset_postdata();  ?>
+           
+          
         </div>
     </div>
 </section>
@@ -155,114 +134,44 @@
         <div class="testimonials-carousel">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="testi-item">
-                            <div class="testi-avatar"><img src="assets/images/testimonials/21.jpg" alt=""></div>
-                            <div class="testimonials-text-before"><i class="fa fa-quote-right"></i></div>
-                            <div class="testimonials-text">
-                                <div class="listing-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
+                    <?php
+                        $args = array(
+                            'post_type' => 'testimonials',
+                            'post_status' => 'publish',
+                            'posts_per_page' => -1,
+                            'orderby' => 'date',
+                            'order' => 'ASC',
+                        );
+                        $testimonials = new WP_Query($args);
+                        while ($testimonials->have_posts()) : $testimonials->the_post(); ?>
+                    
+                        <div class="swiper-slide">
+                            <div class="testi-item">
+                                <div class="testi-avatar"><img src="<?php echo the_post_thumbnail_url(); ?>" alt=""></div>
+                                <div class="testimonials-text-before"><i class="fa fa-quote-right"></i></div>
+                                <div class="testimonials-text">
+                                    <div class="listing-rating">
+                                       <?php 
+                                        $i = 0;
+                                        $rate =(int)get_field('rate');
+                                        for( $i=0; $i<$rate; $i++){
+                                            echo '<i class="fa fa-star"></i>';
+                                        }
+                                       ?>
+                                    </div>
+                                    <p><?php the_content(); ?>
+                                    </p>
+                                    <a href="#" class="text-link"></a>
+                                    <div class="testimonials-avatar">
+                                        <h3><?php the_title(); ?></h3>
+                                        <h4><?php echo the_field('post'); ?></h4>
+                                    </div>
                                 </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                </p>
-                                <a href="#" class="text-link"></a>
-                                <div class="testimonials-avatar">
-                                    <h3>John Doe</h3>
-                                    <h4>Owner</h4>
-                                </div>
+                                <div class="testimonials-text-after"><i class="fa fa-quote-left"></i></div>
                             </div>
-                            <div class="testimonials-text-after"><i class="fa fa-quote-left"></i></div>
                         </div>
-                    </div>
-
-                    <!--second--->
-                    <div class="swiper-slide">
-                        <div class="testi-item">
-                            <div class="testi-avatar"><img src="assets/images/testimonials/3.jpg" alt=""></div>
-                            <div class="testimonials-text-before"><i class="fa fa-quote-right"></i></div>
-                            <div class="testimonials-text">
-                                <div class="listing-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                </p>
-                                <a href="#" class="text-link"></a>
-                                <div class="testimonials-avatar">
-                                    <h3>Doe Boe</h3>
-                                    <h4>Director</h4>
-                                </div>
-                            </div>
-                            <div class="testimonials-text-after"><i class="fa fa-quote-left"></i></div>
-                        </div>
-                    </div>
-                    <!--third-->
-
-                    <div class="swiper-slide">
-                        <div class="testi-item">
-                            <div class="testi-avatar"><img src="assets/images/testimonials/4.jpg" alt=""></div>
-                            <div class="testimonials-text-before"><i class="fa fa-quote-right"></i></div>
-                            <div class="testimonials-text">
-                                <div class="listing-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                </p>
-                                <a href="#" class="text-link"></a>
-                                <div class="testimonials-avatar">
-                                    <h3>Boe Doe</h3>
-                                    <h4>Developer</h4>
-                                </div>
-                            </div>
-                            <div class="testimonials-text-after"><i class="fa fa-quote-left"></i></div>
-                        </div>
-                    </div>
-
-                    <!--fourth-->
-                    <div class="swiper-slide">
-                        <div class="testi-item">
-                            <div class="testi-avatar"><img src="assets/images/testimonials/6.jpg" alt=""></div>
-                            <div class="testimonials-text-before"><i class="fa fa-quote-right"></i></div>
-                            <div class="testimonials-text">
-                                <div class="listing-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                </p>
-                                <a href="#" class="text-link"></a>
-                                <div class="testimonials-avatar">
-                                    <h3>Doe John</h3>
-                                    <h4>Designer</h4>
-                                </div>
-                            </div>
-                            <div class="testimonials-text-after"><i class="fa fa-quote-left"></i></div>
-                        </div>
-                    </div>
-                    <!--testi end-->
-
+                    <?php endwhile;
+                     wp_reset_postdata();  ?>
                 </div>
             </div>
         </div>
@@ -276,18 +185,22 @@
         <div class="our-partner">
             <h4 class="text-center mb-4">Our Partners</h4>
             <div class="owl-carousel owl-theme text-center">
-                <div class="item">
-                    <a href='#'> <img src="assets/images/partners/11.jpg" alt="logo"></a>
-                </div>
-                <div class="item">
-                    <a href='#'> <img src="assets/images/partners/2.jpg" alt="logo"></a>
-                </div>
-                <div class="item">
-                    <a href='#'> <img src="assets/images/partners/29.jpg" alt="logo"></a>
-                </div>
-                <div class="item">
-                    <a href='#'> <img src="assets/images/partners/8.jpg" alt="logo"></a>
-                </div>
+                 <?php
+                    $args = array(
+                        'post_type' => 'partners',
+                        'post_status' => 'publish',
+                        'posts_per_page' => -1,
+                        'orderby' => 'date',
+                        'order' => 'ASC',
+                    );
+                    $partners = new WP_Query($args);
+                    while ($partners->have_posts()) : $partners->the_post(); ?>
+                   
+                    <div class="item">
+                        <a href='#'> <img src="<?php echo the_post_thumbnail_url(); ?>" alt="<?php the_title(); ?>"></a>
+                    </div>
+                <?php endwhile;
+                wp_reset_postdata();  ?>
             </div>
         </div>
     </div>
