@@ -8,6 +8,7 @@ add_action('init', 'consultancy_sliderimage_post_type', 0);
 add_action('init', 'consultancy_countries_post_type', 0);
 add_action('init', 'consultancy_partner_post_type', 0);
 add_action('init', 'consultancy_faq_post_type', 0);
+add_action('init', 'consultancy_test_post_type', 0);
 
 
 //custom post type for teams
@@ -156,7 +157,7 @@ function consultancy_service_post_type() {
         'label'   => __('Services','consultancy' ),
         'description' => __('Services of Consultancy', 'consultancy'),
         'labels'  => $labels,
-        'supports' => array('title', 'thumbnail'),
+        'supports' => array('title', 'thumbnail', 'editor'),
         'hierarchical' => false,
         'public' => true,
         'show_ui' => true,
@@ -295,4 +296,45 @@ function consultancy_faq_post_type() {
     );
     // register the post Type
     register_post_type( 'faqs', $args);
+}
+
+//custom post type for test
+function consultancy_test_post_type() {
+    // Labels for the Post Type
+    $labels = array(
+        'name'                => _x( 'Tests', 'Post Type General Name', 'consultancy' ),
+        'singular_name'       => _x( 'Test', 'Post Type Singular Name', 'consultancy' ),
+        'menu_name'           => __( 'Tests', 'consultancy' ),
+        'parent_item_colon'   => __( 'Parent Test', 'consultancy' ),
+        'all_items'           => __( 'All Tests', 'consultancy' ),
+        'view_item'           => __( 'View Test', 'consultancy' ),
+        'add_new_item'        => __( 'Add New Test', 'consultancy' ),
+        'add_new'             => __( 'Add New Test', 'consultancy' ),
+        'edit_item'           => __( 'Edit Test', 'consultancy' ),
+        'update_item'         => __( 'Update Test', 'consultancy' ),
+        'search_items'        => __( 'Search Test', 'consultancy' ),
+        'not_found'           => __( 'No Tests found', 'consultancy' ),
+        'not_found_in_trash'  => __( 'Not found in trash', 'consultancy' ),
+    );
+    // Another Customizations
+    $args = array(
+        'label'   => __('Tests','consultancy' ),
+        'description' => __('Tests of Consultancy', 'consultancy'),
+        'labels'  => $labels,
+        'supports' => array('title', 'editor'),
+        'hierarchical' => false,
+        'public' => true,
+        'show_ui' => true,
+        'show_in_menus' => true,
+        'show_in_nav_menus' => true,
+        'show_in_admin_bar' => true,
+        'menu_position' => 15,
+        'menu_icon' => 'dashicons-welcome-learn-more',
+        'can_export' => true,
+        'has_archive' => true,
+        'exclude_from_search' => false,
+        'capability_type' => 'page',
+    );
+    // register the post Type
+    register_post_type( 'tests', $args);
 }

@@ -48,7 +48,7 @@
                     if(has_custom_logo() || is_customize_preview()){
                         the_custom_logo();
                     } else { ?>
-                      <a href="<?php echo esc_url(home_url('/')); ?>" >
+                      <a href="<?php  echo esc_url(home_url('/')); ?>" >
                         <img class="img-fluid" src="<?php echo get_template_directory_uri()?>'assets\images\logo\logo.jpg'" alt="Logo">
                       </a>
                 <?php } ?>
@@ -58,16 +58,18 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
+
+                      
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php">HOME</a>
+                            <a class="nav-link" href="<?php echo esc_url(home_url()); ?>">HOME</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 ABOUT US
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                <a class="dropdown-item" href="introduction.php"> INTRODUCTION</a>
-                                <a class="dropdown-item" href="our-team.php"> OUR TEAM</a>
+                                <a class="dropdown-item" href="<?php echo esc_url(site_url('/introduction')); ?>"> INTRODUCTION</a>
+                                <a class="dropdown-item" href="<?php echo esc_url(site_url('/our-team')) ?>"> OUR TEAM</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -75,47 +77,79 @@
                                 STUDY ABROAD
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                <a class="dropdown-item" href="study-in-usa.php"> USA</a>
-                                <a class="dropdown-item" href="study-in-australia.php"> AUSTRALIA</a>
-                                <a class="dropdown-item" href="study-in-canada.php"> CANADA</a>
-                                <a class="dropdown-item" href="study-in-uk.php"> UK</a>
+                                <?php
+                                $args = array(
+                                    'post_type' => 'countries',
+                                    'post_status' => 'publish',
+                                    'posts_per_page' => -1,
+                                    'orderby' => 'date',
+                                    'order' => 'ASC',
+                                );
+                                $countries = new WP_Query($args);
+                                while ($countries->have_posts()) : $countries->the_post(); ?>
+                                    <a class="dropdown-item" href="<?php the_permalink(); ?>"> <?php the_title(); ?></a>
+                                <?php endwhile;
+                                wp_reset_postdata();  ?>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 SERVICES </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                <a class="dropdown-item" href="visa-counseling.php"> Visa Counseling</a>
-                                <a class="dropdown-item" href="application-processing.php"> Application Processing</a>
-                                <a class="dropdown-item" href="test-prep.php"> Test Preparation Classes</a>
-                                <a class="dropdown-item" href="documentation-guide.php">Documentation Guide </a>
-                                <a class="dropdown-item" href="pre-departure.php">Pre-departure Guide </a>
-                                <a class="dropdown-item" href="visa-lodgment.php">Assistance on Visa Lodgment </a>
+                                  <?php
+                                    $args = array(
+                                        'post_type' => 'services',
+                                        'post_status' => 'publish',
+                                        'posts_per_page' => -1,
+                                        'orderby' => 'date',
+                                        'order' => 'ASC',
+                                    );
+                                    $services = new WP_Query($args);
+                                    while ($services->have_posts()) : $services->the_post(); ?>
+                                    <a class="dropdown-item" href="<?php the_permalink(); ?>"> <?php the_title(); ?></a>
+                                <?php endwhile;
+                                wp_reset_postdata();  ?>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 TEST PREPARATION </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                <a class="dropdown-item" href="ielts.php"> IELTS</a>
-                                <a class="dropdown-item" href="toefl.php"> TOEFL</a>
-                                <a class="dropdown-item" href="gmat.php"> GMAT</a>
-                                <a class="dropdown-item" href="gre.php">GRE</a>
-                                <a class="dropdown-item" href="sat.php">SAT </a>
-                                <a class="dropdown-item" href="pte.php">PTE </a>
+                                <?php
+                                    $args = array(
+                                        'post_type' => 'tests',
+                                        'post_status' => 'publish',
+                                        'posts_per_page' => -1,
+                                        'orderby' => 'date',
+                                        'order' => 'ASC',
+                                    );
+                                    $tests = new WP_Query($args);
+                                    while ($tests->have_posts()) : $tests->the_post(); ?>
+                                    <a class="dropdown-item" href="<?php the_permalink(); ?>"> <?php the_title(); ?></a>
+                                <?php endwhile;
+                                wp_reset_postdata();  ?>
                             </div>
                         </li>
+                       <!--  <?php
+                            wp_nav_menu( array(
+                                'menu' => 'header',
+                                'menu_class' => 'navbar-nav ml-auto',
+                                'fallback_cb' => false,
+                                'list_item_class'  => 'nav-item',
+                                'link_class'   => 'nav-link',
+                            ));
+                        ?> -->
                         <li class="nav-item">
-                            <a class="nav-link" href="blog.php">BLOG</a>
+                            <a class="nav-link" href="<?php echo esc_url(site_url('/blog')); ?>">BLOG</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="gallery.php">GALLERY</a>
+                            <a class="nav-link" href="<?php echo esc_url(site_url('/gallery')); ?>">GALLERY</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="faq.php">FAQ</a>
+                            <a class="nav-link" href="<?php echo esc_url(site_url('/faq')); ?>">FAQ</a>
                         </li>
                         <li class="further-info">
-                            <a href='contact-us.php'><button class="enquiry">ENQUIRY</button></a>
+                            <a href='<?php echo esc_url(site_url('/contact-us')); ?>'><button class="enquiry">ENQUIRY</button></a>
                         </li>
                     </ul>
                 </div>

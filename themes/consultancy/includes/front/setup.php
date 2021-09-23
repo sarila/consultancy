@@ -8,7 +8,7 @@
       // add_image_size('products', '190', '200');
       
       register_nav_menu('nav', __('Header Menu', 'consultancy'));
-      register_nav_menu('services', __('Services Menu', 'consultancy'));
+      register_nav_menu('services', __('Test Menu', 'consultancy'));
       register_nav_menu('footer', __('Footer Menu', 'consultancy'));
 
 }
