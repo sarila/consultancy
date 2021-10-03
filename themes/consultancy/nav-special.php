@@ -57,7 +57,16 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
+                    <?php
+                        wp_nav_menu( array(
+                            'menu' => 'header',
+                            'menu_class' => 'navbar-nav ml-auto',
+                            'fallback_cb' => false,
+                            'list_item_class'  => 'nav-item',
+                            'link_class'   => 'nav-link',
+                        ));
+                    ?> 
+                   <!--  <ul class="navbar-nav ml-auto">
 
                       
                         <li class="nav-item">
@@ -130,15 +139,7 @@
                                 wp_reset_postdata();  ?>
                             </div>
                         </li>
-                       <!--  <?php
-                            wp_nav_menu( array(
-                                'menu' => 'header',
-                                'menu_class' => 'navbar-nav ml-auto',
-                                'fallback_cb' => false,
-                                'list_item_class'  => 'nav-item',
-                                'link_class'   => 'nav-link',
-                            ));
-                        ?> -->
+                      
                         <li class="nav-item">
                             <a class="nav-link" href="<?php echo esc_url(site_url('/blog')); ?>">BLOG</a>
                         </li>
@@ -151,7 +152,7 @@
                         <li class="further-info">
                             <a href='<?php echo esc_url(site_url('/contact-us')); ?>'><button class="enquiry">ENQUIRY</button></a>
                         </li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
         </nav>

@@ -14,6 +14,15 @@ const showClass = "show";
 
 $(window).on("load resize", function () {
   if (this.matchMedia("(min-width: 768px)").matches) {
+      $(".navbar .menu-item-has-children > a").attr( {
+        role:"button",
+        "data-toggle" : "dropdown",
+        "aria-haspopup":"true",
+         "aria-expanded": "false", 
+      } );
+
+      $(".navbar .menu-item-has-children > a").addClass("dropdown-toggle");
+
     $dropdown.hover(
       function () {
         const $this = $(this);

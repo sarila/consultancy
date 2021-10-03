@@ -95,7 +95,7 @@ ul li:nth-child(5) a:hover .fab {
 }
 
 .navbar a {
-  color: var(--black-color) !important;
+  color: var(--black-color);
   font-size: 14px;
 }
 
@@ -103,6 +103,9 @@ ul li:nth-child(5) a:hover .fab {
   color: white !important;
 }
 
+.navbar-light .navbar-nav .nav-link {
+  color: #000;
+}
 .nav-link {
   margin-right: 10px;
   cursor: pointer;
@@ -150,9 +153,10 @@ ul li:nth-child(5) a:hover .fab {
 .enquiry {
   font-size: 14px;
   background: var(--primary-color);
-  color: #fff;
+  color: white !important;
   border: 1px solid var(--primary-color);
-  padding: 4px 20px;
+  padding: 0 0 0 10px;
+
 }
 
 .enquiry:hover {
@@ -162,6 +166,9 @@ ul li:nth-child(5) a:hover .fab {
   cursor: pointer;
 }
 
+.enquiry>a.nav-link {
+    color: white;
+}
 /*MAIN NAVBAR ENDS*/
 
 
@@ -177,4 +184,22 @@ ul li:nth-child(5) a:hover .fab {
   .top-right ul {
     display: flex;
   }
+}
+.dropdown-item{
+  padding: 0;
+}
+.dropdown-menu {
+  padding: 0;
+}
+ul.sub-menu.dropdown-menu.show li.dropdown-item.nav-item a {
+  color: white;
+  padding: .25rem 1.5rem;
+}
+
+.navbar-expand-lg .navbar-collapse {
+  justify-content: flex-end;
+}
+
+.further-info a {
+  color: white !important;
 }

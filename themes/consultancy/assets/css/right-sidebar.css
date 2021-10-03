@@ -55,7 +55,7 @@
 .abroad-programs ul li a:hover,
 .test-preparation ul li a:hover {
     text-decoration: none;
-    background: red;
+    background: var(--primary-color);
     color: white;
 }
 

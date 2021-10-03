@@ -27,13 +27,13 @@ footer {
     color: var(--white-color);
 }
 
-.third-child {
+/*.third-child {
     display: flex;
-}
+}*/
 
-.third-child ul {
+/*.third-child ul {
     width: 50%;
-}
+}*/
 
 .social-buttons {
     display: flex;
@@ -137,7 +137,7 @@ footer {
 }
 
 .social-button--youtube {
-    color: (29, 161, 242);
+    color: rgb(29, 161, 242);
 }
 
 .social-button--youtube::after {
@@ -259,4 +259,20 @@ footer {
 .copyright {
     font-size: 13px;
 }
+}
+
+.fa-angle-right:before {
+    color: white;
+    padding:  0 5px 0 0;
+}
+
+#menu-test {
+    columns: 2;
+}
+
+#join-button {
+    color: white;
+    background: #cd0e15;
+    border: 1px solid white;
+    padding-left: 12px;
 }

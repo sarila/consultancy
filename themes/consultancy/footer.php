@@ -45,20 +45,19 @@
                     <h5>Quick Links</h5>
                 </div>
                 <div class="second-child">
-                    <ul>
-                        <?php
-                            wp_nav_menu( array(
-                                'menu' => 'footer',
-                                // 'menu_class' => 'navbar-nav ms-auto',
-                                'fallback_cb' => false,
-                                'list_item_class'  => 'fas fa-angle-right mr-2',
-                            ));
-                        ?> 
+                    <?php
+                        wp_nav_menu( array(
+                            'menu' => 'footer',
+                            // 'menu_class' => 'navbar-nav ms-auto',
+                            'fallback_cb' => false,
+                            // 'link_class'   => 'fas fa-angle-right mr-2',
+                            
+                        ));
+                    ?> 
                         <!-- <li><a href="index.php"><i class="fas fa-angle-right mr-2"></i>Home</a></li>
                         <li><a href="introduction.php"><i class="fas fa-angle-right mr-2"></i>About Us</a></li>
                         <li><a href="blog.php"><i class="fas fa-angle-right mr-2"></i>Blog</a></li>
                         <li><a href="contact-us.php"><i class="fas fa-angle-right mr-2"></i>Contact Us</a></li> -->
-                    </ul>
                 </div>
             </div>
             <div class="col-lg-3 col-md-5">
@@ -66,16 +65,16 @@
                     <h5>Test Preparation</h5>
                 </div>
                 <div class="third-child">
-                    <ul>
-                        <?php
-                            wp_nav_menu( array(
-                                'menu' => 'test',
-                                // 'menu_class' => 'navbar-nav ms-auto',
-                                'fallback_cb' => false,
-                                'list_item_class'  => 'fas fa-angle-right mr-2',
-                            ));
-                        ?> 
-                    </ul>
+                    
+                    <?php
+                        wp_nav_menu( array(
+                            'menu' => 'test',
+                            // 'menu_class' => 'navbar-nav ms-auto',
+                            'fallback_cb' => false,
+                            // 'link_class'   => 'fas fa-angle-right mr-2',
+
+                        ));
+                    ?> 
                    <!--  <ul>
                         <li><a href="ielts.php"><i class="fas fa-angle-right mr-2"></i>IELTS</a></li>
                         <li><a href="toefl.php"><i class="fas fa-angle-right mr-2"></i>TOEFL</a></li>
